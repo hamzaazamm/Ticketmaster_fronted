@@ -35,3 +35,9 @@ body {
   border-radius: 100px;
 }
 
+/* globals.css */
+.calendar-horizontal .rdp-months {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}

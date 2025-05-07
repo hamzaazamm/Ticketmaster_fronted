@@ -11,12 +11,14 @@ import CustomLocationIcon from "./CustomLocationIcon";
 import CustomCancelIcon from "./CustomCancelIcon";
 import CustomCalendarIcon from "./CustomCalendarIcon";
 import CustomArrowIcon from "./CustomArrowIcon";
+import DateSelector from "./DateSelector";
 import Logo from "./Logo";
 
 import CustomPayPalIcon from "./CustomPayPalIcon";
 
 export default function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Oneed for type in JS (TypeScript would require it)
+  const [expandedCategory, setExpandedCategory] = useState(null);
   const [showConcertsDropdown, setShowConcertsDropdown] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -34,6 +36,7 @@ export default function Header() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showConcertsDropdown]);
+
   return (
     <header>
       {/* Top black header */}
@@ -179,79 +182,79 @@ export default function Header() {
                     <div className="grid grid-cols-5 gap-4">
                       <div className="space-y-2"></div>
                       <div className="space-y-2">
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Alternative
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Ballad/Romantic
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Blues
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Children&apos;s Music
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Classical
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Country
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Dance/Electronic
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Folk
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Hip-Hop/Rap
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Holiday
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Jazz
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Latin
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Medieval/Renaissance
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Metal
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           New Age
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Other
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Pop
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           R&B
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Reggae
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Religious
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-md hover:text-gray-200 hover:underline">
                           Rock
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline">
+                        <div className="cursor-pointer font-sm hover:text-gray-200 hover:underline">
                           World
                         </div>
-                        <div className="cursor-pointer hover:text-indigo-600 hover:underline font-semibold text-indigo-600">
+                        <div className="cursor-pointer  hover:text-gray-200 hover:underline font-sm text-indigo-600">
                           All Concerts →
                         </div>
                       </div>
@@ -308,6 +311,164 @@ export default function Header() {
           </Link>
         </div>
       </nav>
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-95 text-white z-50 p-6 overflow-y-auto">
+          {/* Top section with logo and close */}
+          <div className="flex justify-between items-center mb-6">
+            <Logo />
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-2xl"
+            >
+              <FaTimes />
+            </button>
+          </div>
+
+          {/* Menu Categories */}
+          <div className="space-y-4 text-2xl mt-20px font-semibold">
+            {/* Concerts */}
+            <div>
+              <button
+                onClick={() =>
+                  setExpandedCategory(
+                    expandedCategory === "concerts" ? null : "concerts"
+                  )
+                }
+                className="w-full font-2xl text-left"
+              >
+                Concerts
+              </button>
+              {expandedCategory === "concerts" && (
+                <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-300">
+                  <li>Rock</li>
+                  <li>Pop</li>
+                  <li>Hip-Hop/Rap</li>
+                  <li>Country</li>
+                  <li>Jazz</li>
+                </ul>
+              )}
+            </div>
+
+            {/* Sports */}
+            <div>
+              <button
+                onClick={() =>
+                  setExpandedCategory(
+                    expandedCategory === "sports" ? null : "sports"
+                  )
+                }
+                className="w-full text-left"
+              >
+                Sports
+              </button>
+              {expandedCategory === "sports" && (
+                <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-300">
+                  <li>Football</li>
+                  <li>Basketball</li>
+                  <li>Baseball</li>
+                </ul>
+              )}
+            </div>
+
+            {/* Arts & Theater */}
+            <div>
+              <button
+                onClick={() =>
+                  setExpandedCategory(
+                    expandedCategory === "arts" ? null : "arts"
+                  )
+                }
+                className="w-full text-left"
+              >
+                Arts & Theater
+              </button>
+              {expandedCategory === "arts" && (
+                <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-300">
+                  <li>Musicals</li>
+                  <li>Plays</li>
+                  <li>Classical</li>
+                </ul>
+              )}
+            </div>
+
+            {/* Comedy */}
+            <div>
+              <button
+                onClick={() =>
+                  setExpandedCategory(
+                    expandedCategory === "comedy" ? null : "comedy"
+                  )
+                }
+                className="w-full text-left"
+              >
+                Comedy
+              </button>
+              {expandedCategory === "comedy" && (
+                <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-300">
+                  <li>Stand-Up</li>
+                  <li>Improv</li>
+                </ul>
+              )}
+            </div>
+
+            {/* Family */}
+            <div>
+              <button
+                onClick={() =>
+                  setExpandedCategory(
+                    expandedCategory === "family" ? null : "family"
+                  )
+                }
+                className="w-full text-left"
+              >
+                Family
+              </button>
+              {expandedCategory === "family" && (
+                <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-300">
+                  <li>Kids Shows</li>
+                  <li>Disney</li>
+                </ul>
+              )}
+            </div>
+          </div>
+
+          {/* Hotels (with icon) */}
+          <div className="mt-8 space-y-4">
+            <div>
+              <button className="w-full flex items-center gap-4 text-left">
+                <CustomHotelIcon className="w-6 h-6" />
+                Hotels
+              </button>
+            </div>
+
+            <div>
+              <button className="w-full text-left">Sell</button>
+            </div>
+
+            <div>
+              <button className="w-full flex items-center gap-4 text-left">
+                <CustomGiftCardIcon className="w-6 h-6" />
+                Gift Cards
+              </button>
+            </div>
+
+            <div>
+              <button className="w-full text-left">Help</button>
+            </div>
+
+            <div>
+              <button className="w-full text-left">VIP</button>
+            </div>
+
+            <div>
+              <button className="w-full flex items-center gap-4 text-left">
+                <CustomPayPalIcon className="w-6 h-6" />
+                PayPal
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <section
         className="bg-[rgb(2,77,223)] py-0 sm:py-9 flex justify-center"
@@ -332,19 +493,7 @@ export default function Header() {
             </div>
 
             {/* Date Selector */}
-            <div
-              className="flex items-center bg-white text-black px-4 py-2 w-1/2 sm:w-[180px] text-md"
-              role="region"
-              aria-label="Date selector"
-            >
-              <span className="mr-2" aria-hidden="true">
-                <CustomCalendarIcon className="w-5 h-5 text-blue-700" />
-              </span>
-              <span className="truncate">All Dates</span>
-              <span className="flex items-center ml-auto">
-                <CustomArrowIcon className="w-5 h-5 text-blue-700 sm:rotate-0 rotate-270" />
-              </span>
-            </div>
+            <DateSelector />
           </div>
 
           {/* Search Container */}

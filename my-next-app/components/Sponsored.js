@@ -1,6 +1,5 @@
 "use client";
 
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation, Scrollbar } from "swiper"; // Adjust the import statement
@@ -41,7 +40,9 @@ export default function Sponsored() {
                 </div>
                 <div className="flex items-center justify-between mt-4">
                   <div className="text-left">
-                    <p className="text-sm text-gray-700">Sat • Jun 21 • 7:30 PM</p>
+                    <p className="text-sm text-gray-700">
+                      Sat • Jun 21 • 7:30 PM
+                    </p>
                   </div>
                   <div className="text-right">
                     <img
@@ -85,7 +86,9 @@ export default function Sponsored() {
                 </div>
                 <div className="flex items-center justify-between mt-4">
                   <div className="text-left">
-                    <p className="text-sm text-gray-700">Sat • Jun 21 • 7:30 PM</p>
+                    <p className="text-sm text-gray-700">
+                      Sat • Jun 21 • 7:30 PM
+                    </p>
                   </div>
                   <div className="text-right">
                     <img
@@ -129,7 +132,9 @@ export default function Sponsored() {
                 </div>
                 <div className="flex items-center justify-between mt-4">
                   <div className="text-left">
-                    <p className="text-sm text-gray-700">Sat • Jun 21 • 7:30 PM</p>
+                    <p className="text-sm text-gray-700">
+                      Sat • Jun 21 • 7:30 PM
+                    </p>
                   </div>
                   <div className="text-right">
                     <img
@@ -178,7 +183,9 @@ export default function Sponsored() {
               </div>
               <div className="flex items-center justify-between mt-4">
                 <div className="text-left">
-                  <p className="text-sm text-gray-700">Sat • Jun 21 • 7:30 PM</p>
+                  <p className="text-sm text-gray-700">
+                    Sat • Jun 21 • 7:30 PM
+                  </p>
                 </div>
                 <div className="text-right">
                   <img
@@ -220,7 +227,9 @@ export default function Sponsored() {
               </div>
               <div className="flex items-center justify-between mt-4">
                 <div className="text-left">
-                  <p className="text-sm text-gray-700">Sat • Jun 21 • 7:30 PM</p>
+                  <p className="text-sm text-gray-700">
+                    Sat • Jun 21 • 7:30 PM
+                  </p>
                 </div>
                 <div className="text-right">
                   <img
@@ -262,7 +271,9 @@ export default function Sponsored() {
               </div>
               <div className="flex items-center justify-between mt-4">
                 <div className="text-left">
-                  <p className="text-sm text-gray-700">Sat • Jun 21 • 7:30 PM</p>
+                  <p className="text-sm text-gray-700">
+                    Sat • Jun 21 • 7:30 PM
+                  </p>
                 </div>
                 <div className="text-right">
                   <img

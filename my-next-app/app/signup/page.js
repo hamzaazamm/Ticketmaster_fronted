@@ -30,7 +30,7 @@ const Signup = () => {
         <div className="max-w-xs text-left">
           <h2 className="text-5xl font-semibold text-cyan-400">Welcome Back</h2>
           <p className="mt-8 text-sm">
-            Shop millions of live events, discover can't-miss concerts, games,
+            Shop millions of live events, discover can&apos;t-miss concerts, games,
             theatre, and more — all with secure and effortless ticketing.
           </p>
         </div>

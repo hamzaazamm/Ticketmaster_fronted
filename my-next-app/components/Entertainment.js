@@ -8,23 +8,22 @@ import "swiper/css/scrollbar";
 export default function Popular() {
   return (
     <div className="w-full px-0 md:px-2 lg:px-4 py-1 bg-gray-100">
-     <div className="w-[100%] ml-7"> 
-     <div className="border-t border-gray-300 w-full mb-5 "></div>
-    <h2 className="text-2xl font-bold text-black text-center">
-    ENTERTAINMENT GUIDES
-    </h2>
-    </div>
-      
-    <div className="flex justify-between  items-center pb-2 border-b border-gray-200">
-      {/* Left-aligned 'Concerts' */}
-      <span className="text-lg font-semibold text-left">Concerts</span>
-      
-      {/* Right-aligned 'See All Concerts' link */}
-      <span className="text-sm text-blue-700 hover:text-blue-900 hover:underline cursor-pointer text-right">
-        See All Concerts
-      </span>
-    </div>
-  
+      <div className="w-[100%] ml-7">
+        <div className="border-t border-gray-300 w-full mb-5 "></div>
+        <h2 className="text-2xl font-bold text-black text-center">
+          ENTERTAINMENT GUIDES
+        </h2>
+      </div>
+
+      <div className="flex justify-between  items-center pb-2 border-b border-gray-200">
+        {/* Left-aligned 'Concerts' */}
+        <span className="text-lg font-semibold text-left">Concerts</span>
+
+        {/* Right-aligned 'See All Concerts' link */}
+        <span className="text-sm text-blue-700 hover:text-blue-900 hover:underline cursor-pointer text-right">
+          See All Concerts
+        </span>
+      </div>
 
       {/* Flex container to split 80% / 20% */}
       <div className="flex w-full">
@@ -36,7 +35,7 @@ export default function Popular() {
             slidesPerView={5}
             navigation
             pagination={{ clickable: true }}
-            scrollbar={{ 
+            scrollbar={{
               draggable: true,
               hide: false, // Ensure it's always visible
               dragSize: 100, // Makes the draggable part wider

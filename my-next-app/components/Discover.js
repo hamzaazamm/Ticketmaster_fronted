@@ -40,8 +40,8 @@ export default function Discover() {
                 Disney On Ice Guide
               </h3>
               <p className="text-sm text-gray-600 mt-2">
-                Here's what you need to know about how to make your Disney On
-                Ice outing a dream come true.
+                Here&apos;s what you need to know about how to make your Disney
+                On Ice outing a dream come true.
               </p>
               <a
                 href="#"

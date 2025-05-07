@@ -189,7 +189,7 @@ export default function Header() {
                           Blues
                         </div>
                         <div className="cursor-pointer hover:text-indigo-600 hover:underline">
-                          Children's Music
+                          Children&apos;s Music
                         </div>
                         <div className="cursor-pointer hover:text-indigo-600 hover:underline">
                           Classical

@@ -18,7 +18,7 @@ export default function Footer() {
           <div className="scale-110 pb-10">
             <Logo />
           </div>
-          <p className="mb-3 text-lg">Let's connect</p>
+          <p className="mb-3 text-lg">Let&apos;s connect</p>
 
           <div className="flex justify-start space-x-5 mb-5">
             <a href="#" aria-label="Facebook">

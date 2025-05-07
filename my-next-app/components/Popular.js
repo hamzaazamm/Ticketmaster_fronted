@@ -9,7 +9,7 @@ export default function Popular() {
   return (
     <div className="w-full px-2 md:px-4 lg:px-8 py-5 bg-gray-100">
       <div className="w-[100%] ml-7">
-      <div className="border-t border-gray-300 w-full mb-5 mt-3"></div>
+        <div className="border-t border-gray-300 w-full mb-5 mt-3"></div>
         <h2 className="text-2xl font-bold text-black text-center ">
           POPULAR NEAR YOU
         </h2>

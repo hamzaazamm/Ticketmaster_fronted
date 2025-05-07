@@ -50,7 +50,7 @@ export default function Home() {
 
           {/* Sidebar */}
           <div className="w-full lg:w-[17%] bg-white mb-4 lg:mb-0">
-            <ImageSidebar />
+            <imgSidebar />
           </div>
 
           {/* Empty space, adjust if necessary */}

@@ -21,11 +21,11 @@ import Sponsored from "@/components/Sponsored";
 import Popular1 from "@/components/Popular1";
 import Popular2 from "@/components/Popular2";
 import Popular3 from "@/components/Popular3";
+import ImageSidebar from "@/components/ImageSidebar";
 import Entertainment from "@/components/Entertainment.js";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import ImageSidebar from "@/components/ImageSidebar";
 
 export default function Home() {
   return (
@@ -50,7 +50,7 @@ export default function Home() {
 
           {/* Sidebar */}
           <div className="w-full lg:w-[17%] bg-white mb-4 lg:mb-0">
-            <imgSidebar />
+            <ImageSidebar />
           </div>
 
           {/* Empty space, adjust if necessary */}

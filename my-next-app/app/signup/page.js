@@ -4,44 +4,36 @@ import Link from "next/link";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-
-    // Proceed with signup logic here
-    console.log("Form submitted", { email, password });
+    // Form submission logic here
+    console.log("Form submitted", { email });
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      {/* Left Section (Welcome Message) */}
+    <div className="flex flex-col  md:flex-row items-start md:items-center md:shadow-2xl justify-start md:justify-center min-h-screen bg-white">
+      {/* Left Section (Welcome Message) - Hidden on mobile */}
       <div
-        className="w-80 h-[680px] bg-cover bg-center  shadow-lg flex flex-col justify-start items-start p-6 text-white"
+        className="hidden md:block w-80 h-[680px] bg-cover bg-center flex-col justify-start items-start p-6 text-white"
         style={{ backgroundImage: "url('/theme/theme1.jpg')" }}
       >
-        <div className="max-w-xs text-left">
+        <div className="max-w-xs text-left md:shadow-2xl">
           <h2 className="text-5xl font-semibold text-cyan-400">Welcome Back</h2>
           <p className="mt-8 text-sm">
-            Shop millions of live events, discover can&apos;t-miss concerts, games,
-            theatre, and more — all with secure and effortless ticketing.
+            Shop millions of live events, discover can&apos;t-miss concerts,
+            games, theatre, and more — all with secure and effortless ticketing.
           </p>
         </div>
       </div>
 
-      {/* Right Section (Form) */}
-      <div className="w-140 h-[680px] p-6 bg-white  shadow-lg ">
+      {/* Right Section (Form) - Full width on mobile, aligned to top-left */}
+      <div className="w-full md:w-140 h-screen  md:h-[680px] p-6 bg-white md:bg-white md:shadow-lg">
         <div className="text-left mb-4">
           <h2 className="text-lg font-semibold uppercase">Sign In</h2>
           <p className="text-sm mt-2">
-            If you don’t have an account, you will be prompted to create one.
+            If you don't have an account, you will be prompted to create one.
           </p>
         </div>
 
@@ -57,7 +49,7 @@ const Signup = () => {
               type="email"
               id="email"
               name="email"
-              className="w-full p-1 mt-2 border border-black "
+              className="w-full p-1 mt-2 border border-black"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -74,19 +66,14 @@ const Signup = () => {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="px-4 py-1 bg-blue-600 text-white font-semibold  hover:bg-blue-700 transition"
-              disabled={
-                !email ||
-                !password ||
-                !confirmPassword ||
-                password !== confirmPassword
-              }
+              className="px-4 py-1 bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+              disabled={!email}
             >
               Continue
             </button>
           </div>
 
-          <div className="mt-6 text-left text-xs text-gray-500">
+          <div className="mt-6 text-left md:shadow-2xl text-xs text-gray-500">
             By continuing past this page, you agree to the{" "}
             <Link
               href="/terms-of-use"

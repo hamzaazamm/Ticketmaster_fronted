@@ -12,6 +12,7 @@ import CustomCancelIcon from "./CustomCancelIcon";
 import CustomCalendarIcon from "./CustomCalendarIcon";
 import CustomArrowIcon from "./CustomArrowIcon";
 import DateSelector from "./DateSelector";
+
 import Logo from "./Logo";
 
 import CustomPayPalIcon from "./CustomPayPalIcon";
@@ -20,6 +21,8 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Oneed for type in JS (TypeScript would require it)
   const [expandedCategory, setExpandedCategory] = useState(null);
   const [showConcertsDropdown, setShowConcertsDropdown] = useState(false);
+  const [activeSubMenu, setActiveSubMenu] = useState(null);
+
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -43,26 +46,26 @@ export default function Header() {
       <div className="w-full bg-black text-white text-md flex justify-between items-center h-11 px-4">
         {/* Left side - US flag and country name */}
         <div className="flex items-center gap-1 mb-2 sm:mb-0">
-          <div className="w-5 h-5 flex items-center justify-center rounded-full bg-black border border-white overflow-hidden">
+          <div className="w-5 h-5 flex items-center justify-center rounded-full bg-black border border-white overflow-hidden cursor-pointer hover:opacity-80">
             <span className="text-2xl">🇺🇸</span>
           </div>
-          <span>US</span>
+          <span className="cursor-pointer hover:underline">US</span>
         </div>
 
         {/* Right side - Links */}
-        <div className="hidden sm:flex items-center space-x-3">
-          <span className="flex items-center gap-1">
+        <div className="hidden sm:flex items-center space-x-3 text-white">
+          <span className="flex items-center gap-1 hover:underline cursor-pointer">
             <CustomHotelIcon className="w-4 h-4 text-white" />
             Hotels
           </span>
-          <span>Sell</span>
-          <span className="flex items-center gap-1">
+          <span className="hover:underline cursor-pointer">Sell</span>
+          <span className="flex items-center gap-1 hover:underline cursor-pointer">
             <CustomGiftCardIcon className="w-4 h-4 text-white" />
             Gift Cards
           </span>
-          <span>Help</span>
-          <span>VIP</span>
-          <span className="flex items-center gap-1">
+          <span className="hover:underline cursor-pointer">Help</span>
+          <span className="hover:underline cursor-pointer">VIP</span>
+          <span className="flex items-center gap-1 cursor-pointer hover:opacity-80">
             <CustomPayPalIcon className="h-full text-white" />
           </span>
         </div>
@@ -312,161 +315,179 @@ export default function Header() {
         </div>
       </nav>
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-95 text-white z-50 p-6 overflow-y-auto">
-          {/* Top section with logo and close */}
-          <div className="flex justify-between items-center mb-6">
-            <Logo />
-            <button
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-2xl"
+        <div className="fixed inset-0 min-h-[100dvh] bg-black bg-opacity-95 w-full text-white z-50 p-1 overflow-hidden">
+          {/* Wrapper for animations */}
+          <div className="relative w-full h-full">
+            {/* Main Menu */}
+            <div
+              className={`absolute top-0 left-0 w-full h-full p-6 transition-transform duration-300 ease-in-out ${
+                activeSubMenu ? "-translate-x-full" : "translate-x-0"
+              }`}
             >
-              <FaTimes />
-            </button>
+              <div className="flex justify-between items-center mb-4 border-b border-gray-600 pb-5">
+                <Logo />
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-3xl"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="space-y-8 mt-10 font-bold text-xl">
+                {[
+                  { key: "Concerts", label: "CONCERTS" },
+                  { key: "Sports", label: "SPORTS" },
+                  {
+                    key: "Arts, Theater & Comedy",
+                    label: "ARTS, THEATER & COMEDY",
+                  },
+                  { key: "Family", label: "FAMILY" },
+                ].map(({ key, label }) => (
+                  <button
+                    key={key}
+                    onClick={() => setActiveSubMenu(key)}
+                    className="flex items-center justify-between w-full text-left"
+                  >
+                    <span>{label}</span>
+                    <span className="text-5xl">{"›"}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Submenu Page */}
+            <div
+              className={`absolute top-0 left-0 w-full h-full p-6 transition-transform duration-300 ease-in-out bg-black bg-opacity-95 ${
+                activeSubMenu ? "translate-x-0" : "translate-x-full"
+              }`}
+            >
+              <div className="flex justify-between items-center mb-6 border-b border-gray-600 pb-4">
+                <button
+                  onClick={() => setActiveSubMenu(null)}
+                  className="text-left text-lg font-bold flex items-center"
+                >
+                  <span className="text-4xl mr-2">‹</span>
+                  <span className="uppercase">{activeSubMenu}</span>
+                </button>
+
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-3xl font-light"
+                >
+                  ✕
+                </button>
+              </div>
+              <h2 className="text-white text-3xl font-semibold mb-4">
+                Popular
+              </h2>
+              <ul className="space-y-4 text-lg text-gray-300">
+                {activeSubMenu === "Concerts" && (
+                  <>
+                    <li>Rock</li>
+                    <li>Pop</li>
+                    <li>Hip-Hop/Rap</li>
+                    <li>Country</li>
+                    <li>Jazz</li>
+                  </>
+                )}
+
+                {activeSubMenu === "Sports" && (
+                  <>
+                    <li>Football</li>
+                    <li>Basketball</li>
+                    <li>Baseball</li>
+                  </>
+                )}
+
+                {activeSubMenu === "Arts, Theater & Comedy" && (
+                  <>
+                    <li>Musicals</li>
+                    <li>Plays</li>
+                    <li>Classical</li>
+                  </>
+                )}
+
+                {activeSubMenu === "Family" && (
+                  <>
+                    <li>Kids Shows</li>
+                    <li>Disney</li>
+                  </>
+                )}
+              </ul>
+              <div className="border-t border-gray-600 my-6" />
+
+              <h2 className="text-white text-3xl font-bold mb-4">
+                Discover More
+              </h2>
+              <button
+                onClick={() => console.log("Clicked:", activeSubMenu)}
+                className="flex items-center font-bold gap-2 text-blue-900 hover:text-blue-600 text-base font-md transition-colors duration-200"
+              >
+                <span className="capitalize">all {activeSubMenu}</span>
+                <span className="text-5xl">›</span>
+              </button>
+              <ul className="mt-4 space-y-4 text-gray-300 text-lg">
+                {activeSubMenu === "Concerts" && (
+                  <>
+                    <li>Upcoming Tours</li>
+                    <li>Local Events</li>
+                    <li>New Artists</li>
+                  </>
+                )}
+
+                {activeSubMenu === "Sports" && (
+                  <>
+                    <li>Top Teams</li>
+                    <li>Season Highlights</li>
+                    <li>Stadium Events</li>
+                  </>
+                )}
+
+                {activeSubMenu === "Arts, Theater & Comedy" && (
+                  <>
+                    <li>Broadway Shows</li>
+                    <li>Comedy Nights</li>
+                    <li>Art Exhibits</li>
+                  </>
+                )}
+
+                {activeSubMenu === "Family" && (
+                  <>
+                    <li>Weekend Activities</li>
+                    <li>Theme Parks</li>
+                    <li>Educational Shows</li>
+                  </>
+                )}
+              </ul>
+            </div>
           </div>
 
-          {/* Menu Categories */}
-          <div className="space-y-4 text-2xl mt-20px font-semibold">
-            {/* Concerts */}
-            <div>
-              <button
-                onClick={() =>
-                  setExpandedCategory(
-                    expandedCategory === "concerts" ? null : "concerts"
-                  )
-                }
-                className="w-full font-2xl text-left"
-              >
-                Concerts
-              </button>
-              {expandedCategory === "concerts" && (
-                <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-300">
-                  <li>Rock</li>
-                  <li>Pop</li>
-                  <li>Hip-Hop/Rap</li>
-                  <li>Country</li>
-                  <li>Jazz</li>
-                </ul>
-              )}
-            </div>
+          {/* Bottom Fixed Buttons (Hotels, Sell, etc.) */}
+          {!activeSubMenu && (
+            <div className="absolute bottom-0 left-0 w-full">
+              <div className="w-full divide-y divide-gray-300">
+                <button className="w-full flex items-center gap-2 py-3 px-4">
+                  <CustomHotelIcon className="w-6 h-6" />
+                  <span className="flex-1 text-left">Hotels</span>
+                </button>
 
-            {/* Sports */}
-            <div>
-              <button
-                onClick={() =>
-                  setExpandedCategory(
-                    expandedCategory === "sports" ? null : "sports"
-                  )
-                }
-                className="w-full text-left"
-              >
-                Sports
-              </button>
-              {expandedCategory === "sports" && (
-                <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-300">
-                  <li>Football</li>
-                  <li>Basketball</li>
-                  <li>Baseball</li>
-                </ul>
-              )}
-            </div>
+                <button className="w-full py-3 px-4 text-left">Sell</button>
 
-            {/* Arts & Theater */}
-            <div>
-              <button
-                onClick={() =>
-                  setExpandedCategory(
-                    expandedCategory === "arts" ? null : "arts"
-                  )
-                }
-                className="w-full text-left"
-              >
-                Arts & Theater
-              </button>
-              {expandedCategory === "arts" && (
-                <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-300">
-                  <li>Musicals</li>
-                  <li>Plays</li>
-                  <li>Classical</li>
-                </ul>
-              )}
-            </div>
+                <button className="w-full flex items-center gap-2 py-3 px-4">
+                  <CustomGiftCardIcon className="w-6 h-6" />
+                  <span className="flex-1 text-left">Gift Cards</span>
+                </button>
 
-            {/* Comedy */}
-            <div>
-              <button
-                onClick={() =>
-                  setExpandedCategory(
-                    expandedCategory === "comedy" ? null : "comedy"
-                  )
-                }
-                className="w-full text-left"
-              >
-                Comedy
-              </button>
-              {expandedCategory === "comedy" && (
-                <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-300">
-                  <li>Stand-Up</li>
-                  <li>Improv</li>
-                </ul>
-              )}
-            </div>
+                <button className="w-full py-3 px-4 text-left">Help</button>
 
-            {/* Family */}
-            <div>
-              <button
-                onClick={() =>
-                  setExpandedCategory(
-                    expandedCategory === "family" ? null : "family"
-                  )
-                }
-                className="w-full text-left"
-              >
-                Family
-              </button>
-              {expandedCategory === "family" && (
-                <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-300">
-                  <li>Kids Shows</li>
-                  <li>Disney</li>
-                </ul>
-              )}
+                <button className="w-full py-3 px-4 text-left">VIP</button>
+              </div>
+              <span className="block w-70 ">
+                <CustomPayPalIcon className="w-full" />
+              </span>
             </div>
-          </div>
-
-          {/* Hotels (with icon) */}
-          <div className="mt-8 space-y-4">
-            <div>
-              <button className="w-full flex items-center gap-4 text-left">
-                <CustomHotelIcon className="w-6 h-6" />
-                Hotels
-              </button>
-            </div>
-
-            <div>
-              <button className="w-full text-left">Sell</button>
-            </div>
-
-            <div>
-              <button className="w-full flex items-center gap-4 text-left">
-                <CustomGiftCardIcon className="w-6 h-6" />
-                Gift Cards
-              </button>
-            </div>
-
-            <div>
-              <button className="w-full text-left">Help</button>
-            </div>
-
-            <div>
-              <button className="w-full text-left">VIP</button>
-            </div>
-
-            <div>
-              <button className="w-full flex items-center gap-4 text-left">
-                <CustomPayPalIcon className="w-6 h-6" />
-                PayPal
-              </button>
-            </div>
-          </div>
+          )}
         </div>
       )}
 

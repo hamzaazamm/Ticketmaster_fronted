@@ -4,12 +4,20 @@ import Link from "next/link";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
+  const [error, setError] = useState(""); // ← Add this line
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Form submission logic here
+
+    if (!email.includes("@")) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    setError(""); // Clear error if valid
     console.log("Form submitted", { email });
   };
+
 
   return (
     <div className="flex flex-col  md:flex-row items-start md:items-center md:shadow-2xl justify-start md:justify-center min-h-screen bg-white">

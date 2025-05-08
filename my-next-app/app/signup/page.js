@@ -4,7 +4,6 @@ import Link from "next/link";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,7 +32,7 @@ const Signup = () => {
         <div className="text-left mb-4">
           <h2 className="text-lg font-semibold uppercase">Sign In</h2>
           <p className="text-sm mt-2">
-            If you don't have an account, you will be prompted to create one.
+            If you don&apost have an account, you will be prompted to create one.
           </p>
         </div>
 
@@ -88,7 +87,6 @@ const Signup = () => {
             >
               Privacy Policy
             </Link>
-            .
           </div>
         </form>
       </div>

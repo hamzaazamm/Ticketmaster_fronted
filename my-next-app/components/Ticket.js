@@ -2,7 +2,7 @@
 
 export default function Ticket() {
   return (
-    <section className="py-10 bg-gray-100">
+    <section className="py-10 font-[var(--font-cal-sans)] bg-gray-100">
       <div className="flex w-full">
         {/* Left Side - 80% */}
         <div className="w-[100%] px-6">
@@ -62,7 +62,7 @@ export default function Ticket() {
               </div>
 
               {/* Text content */}
-              <div className="p-4 relative z-20">
+              <div className="p-1.5 relative z-20">
                 <p className="text-sm text-gray-700 mt-2">
                   Roll up in style as a VIP at this prestigious football event.
                 </p>
@@ -94,7 +94,7 @@ export default function Ticket() {
               </div>
 
               {/* Text content */}
-              <div className="p-4 relative z-20">
+              <div className="p-1.5 relative z-20">
                 <p className="text-sm text-gray-700 mt-2">
                   Roll up in style as a VIP at this prestigious football event.
                 </p>
@@ -126,7 +126,7 @@ export default function Ticket() {
               </div>
 
               {/* Text content */}
-              <div className="p-4 relative z-20">
+              <div className="p-1.5 relative z-20">
                 <p className="text-sm text-gray-700 mt-2">
                   Roll up in style as a VIP at this prestigious football event.
                 </p>

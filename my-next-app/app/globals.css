@@ -1,16 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 @import "tailwindcss";
+
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-sans: var(--font-lato); /* Updated to use Lato */
+  --font-mono: var(--font-geist-mono);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: 'Lato', sans-serif; /* 👈 Use Lato here as well */
   --font-mono: var(--font-geist-mono);
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -22,8 +27,11 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  margin: 0;
+  padding: 0;
 }
+
 .custom-swiper-scrollbar {
   height: 80px !important; /* increase thickness */
   background-color: rgba(18, 18, 18, 0.58);
@@ -41,3 +49,29 @@ body {
   flex-direction: row;
   gap: 2rem;
 }
+/* Example styles for mobile screens under 900px */
+@media (max-width: 899px) {
+  /* Style adjustments for mobile view */
+  .mobile-header {
+    display: flex;
+    justify-content: center;
+    /* Add other styles specific to mobile view */
+  }
+
+  /* Hide specific elements for mobile */
+  .desktop-links {
+    display: none;
+  }
+
+  /* Show mobile-specific elements (e.g., hamburger menu) */
+  .mobile-menu {
+    display: block;
+  }
+}
+
+@media (max-width: 899px) {
+  .hide-at-899 {
+    display: none;
+  }
+}
+

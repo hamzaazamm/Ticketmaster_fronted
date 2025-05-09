@@ -42,8 +42,9 @@ export default function Popular() {
             }}
             className="pb-6"
             breakpoints={{
-              0: { slidesPerView: 1 },
-              768: { slidesPerView: 3 },
+              300:{slidesPerView: 1},
+              700: { slidesPerView: 1 },
+              1024: { slidesPerView: 5 }, // Use 5 only on larger screens
             }}
           >
             <SwiperSlide>

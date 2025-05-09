@@ -45,7 +45,7 @@ export default function Header() {
       {/* Top black header */}
       <div className="w-full bg-black text-white text-md flex justify-between items-center h-11 px-4">
         {/* Left side - US flag and country name */}
-        <div className="flex items-center gap-1 mb-2 sm:mb-0">
+        <div className="flex items-center gap-1 mb-2 lg:mb-0">
           <div className="w-5 h-5 flex items-center justify-center rounded-full bg-black border border-white overflow-hidden cursor-pointer hover:opacity-80">
             <span className="text-2xl">🇺🇸</span>
           </div>
@@ -53,7 +53,7 @@ export default function Header() {
         </div>
 
         {/* Right side - Links */}
-        <div className="hidden sm:flex items-center space-x-3 text-white">
+        <div className="hidden xl:flex items-center space-x-3 text-white">
           <span className="flex items-center gap-1 hover:underline cursor-pointer">
             <CustomHotelIcon className="w-4 h-4 text-white" />
             Hotels
@@ -71,7 +71,7 @@ export default function Header() {
         </div>
       </div>
 
-      <nav className="hidden sm:flex bg-[rgb(2,77,223)] text-white py-4 px-6 flex justify-between items-center text-2xl relative">
+      <nav className="hidden lg:flex bg-[rgb(2,77,223)] text-white py-4 px-6 flex justify-between items-center text-2xl relative">
         <div className="pl-6 scale-110">
           <Logo />
         </div>
@@ -290,7 +290,7 @@ export default function Header() {
         </Link>
       </nav>
 
-      <nav className="flex sm:hidden items-center bg-[rgb(2,77,223)] justify-between px-4 py-3 text-white sm:hidden relative">
+      <nav className="flex lg:hidden items-center bg-[rgb(2,77,223)] justify-between px-4 py-3 text-white relative">
         {/* Left: Hamburger Menu Button */}
         <div className="flex items-center space-x-4">
           {/* Ensure space between items */}
@@ -491,52 +491,66 @@ export default function Header() {
         </div>
       )}
 
-      <section
-        className="bg-[rgb(2,77,223)] py-0 sm:py-9 flex justify-center"
-        aria-label="Search events"
+<section
+  className="bg-[rgb(2,77,223)] py-0 lg:py-9 flex justify-center"
+  aria-label="Search events"
+>
+  <div className="w-full sm:max-w-full lg:max-w-4xl bg-white px-2 py-2 flex flex-col lg:flex-row lg:items-center">
+    {/* Location + Date Container */}
+    <div className="flex flex-row w-full lg:w-auto pb-3 lg:pb-0 border-b border-gray-200 lg:border-b-0 lg:border-r lg:border-gray-300">
+      {/* Location Selector */}
+      <div
+        className="flex items-center bg-white text-black px-3 py-2 w-full sm:w-full md:w-1/2 lg:w-[200px] text-md border-r border-gray-300"
+        role="region"
+        aria-label="Location selector"
       >
-        <div className="w-full max-w-4xl bg-white px-2 py-2 flex flex-col sm:flex-row sm:items-center">
-          {/* Location + Date Container */}
-          <div className="flex flex-row w-full sm:w-auto pb-3 sm:pb-0 border-b border-gray-200 sm:border-b-0 sm:border-r sm:border-gray-300">
-            {/* Location Selector - has right border in both views */}
-            <div
-              className="flex items-center bg-white text-black px-3 py-2 w-1/2 sm:w-[200px] text-md border-r border-gray-300"
-              role="region"
-              aria-label="Location selector"
-            >
-              <span className="mr-2" aria-hidden="true">
-                <CustomLocationIcon className="w-5 h-5 text-blue-700" />
-              </span>
-              <span className="truncate">City or Zip Code</span>
-              <button className="ml-2" aria-label="Clear location">
-                <CustomCancelIcon className="w-4 h-4 text-slate-500 hover:text-red-600" />
-              </button>
-            </div>
+        <span className="mr-2" aria-hidden="true">
+          <CustomLocationIcon className="w-5 h-5 text-blue-700" />
+        </span>
+        <span className="truncate">City or Zip Code</span>
+        <button className="ml-2" aria-label="Clear location">
+          <CustomCancelIcon className="w-4 h-4 text-slate-500 hover:text-red-600" />
+        </button>
+      </div>
 
-            {/* Date Selector */}
-            <DateSelector />
-          </div>
+      {/* Date Selector */}
+      <div
+  className="flex items-center bg-white text-black px-0 lg:pr-0 py-2 w-full sm:w-full md:w-1/2 lg:w-[200px] text-md"
+  role="region"
+  aria-label="Date selector"
+>
+  <DateSelector />
+</div>
+    </div>
 
-          {/* Search Container */}
-          <div className="relative flex items-center w-full pt-3 sm:pt-0 sm:pl-3">
-            <input
-              type="text"
-              placeholder="Search by Artist, Event or Venue"
-              className="flex-1 pr-10 pl-4 sm:pl-10 text-md text-black h-12 rounded-md focus:outline-none border sm:border-0 border-gray-300"
-              aria-label="Search by Artist, Event or Venue"
-            />
-            <span className="absolute right-3 sm:right-auto sm:left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-              <FaSearch className="w-5 h-5" />
-            </span>
-            <button
-              className="hidden sm:block bg-blue-600 text-white px-5 py-[10px] rounded-md font-medium text-md-bold hover:bg-blue-700 ml-3"
-              aria-label="Search"
-            >
-              Search
-            </button>
-          </div>
-        </div>
-      </section>
+    {/* Search Input + Button */}
+    <div className="relative flex items-center w-full pt-3 lg:pt-0 lg:pl-4 lg:border-l-0 lg:border-gray-300 h-full">
+    <input
+        type="text"
+        placeholder="Search by Artist, Event or Venue"
+        className="flex-1 pr-10 pl-4 lg:pl-10 text-md text-black h-12 rounded-md focus:outline-none border lg:border-0 border-gray-300"
+        aria-label="Search by Artist, Event or Venue"
+      />
+      <span className="absolute right-3 lg:left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+        <FaSearch className="w-5 h-5" />
+      </span>
+      <button
+        className="hidden lg:block bg-blue-600 text-white px-5 py-[10px] rounded-md font-medium text-md-bold hover:bg-blue-700 ml-3"
+        aria-label="Search"
+      >
+        Search
+      </button>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
     </header>
   );
 }

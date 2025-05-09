@@ -30,7 +30,7 @@ import "swiper/css/pagination";
 export default function Home() {
   return (
     <>
-      <main className="min-h-screen font-sans bg-grey-100">
+      <main className="min-h-screen bg-grey-100">
         <Header />
         <Hero />
 

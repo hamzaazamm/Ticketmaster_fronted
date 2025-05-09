@@ -14,7 +14,7 @@ export default function Hero() {
           Bryan Adams: Roll with the Punches
         </h1>
         <p className="mb-2 md:mb-4 text-sm md:text-base">PRESALE AVAILABLE NOW</p>
-        <button className="bg-indigo-700 hover:bg-indigo-800 px-4 py-2 w-32 md:w-40 text-white rounded text-sm md:text-base">
+        <button className="bg-[rgb(2,77,223)] hover:bg-indigo-800 px-4 py-2 w-32 md:w-40 text-white rounded text-sm md:text-base">
           Find Tickets
         </button>
       </div>

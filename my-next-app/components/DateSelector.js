@@ -44,7 +44,7 @@ export default function DateSelector() {
         <span className="flex items-center ml-auto">
           <CustomArrowIcon
             className={`w-5 h-5 text-blue-700 transition-transform ${
-              isOpen ? "rotate-180" : "rotate-270 sm:rotate-0"
+              isOpen ? "rotate-180" : "lg:rotate-0 rotate-270"
             }`}
           />
         </span>

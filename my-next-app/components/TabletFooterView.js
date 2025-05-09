@@ -14,7 +14,7 @@ export default function TabletFooterView() {
           </div>
 
           <div>
-            <p className="font-semibold text-lg mb-2">Let's connect</p>
+            <p className="font-semibold text-lg mb-2">Let&apos;s connect</p>
             <div className="flex gap-4">
               <a href="#" aria-label="Facebook">
                 <img
